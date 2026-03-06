@@ -19,9 +19,10 @@ import FilterBar from "@/components/FilterBar";
 import PackageCard from "@/components/PackageCard";
 import Footer from "@/components/Footer";
 import { ChevronDown, Music2, MessageCircle } from "lucide-react";
+import Cover from "@/assets/Cover2.png";
 
 // CDN URLs ของรูปที่ generate ไว้
-const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663409426185/N2cp2yxXafPAPb2r82tKBP/hero-saodung-HtW6XJDGvDYbJ7BhWdFnnH.webp";
+const HERO_IMAGE = Cover;
 const PAPER_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663409426185/N2cp2yxXafPAPb2r82tKBP/paper-texture-bg-bhDE3hGQsHoRYQjsUPV2vW.webp";
 
 const SONGS_PER_PAGE = 8;
@@ -87,21 +88,22 @@ export default function Home() {
               <div className="flex items-center gap-2 mb-4">
                 <div className="h-px flex-1 bg-[#D4C5A0]" />
                 <span className="text-[10px] font-semibold text-[#9A8070] uppercase tracking-[0.2em]">
-                  โน้ตเพลงซอด้วง
+                  โน้ตเพลงสำหรับเครื่องดนตรีไทย
                 </span>
                 <div className="h-px flex-1 bg-[#D4C5A0]" />
               </div>
 
               <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#2C1810] leading-tight mb-4">
-                ซอด้วง
-                <br />
-                <span className="text-[#8B3A2A]">Tabs</span>
+               โน้ตเพลงจากใบบุญเอง
               </h1>
+              <p className="text-xl md:text-2xl font-medium text-[#8B3A2A] mb-4">
+                เป็นเด็กวิศวะคอมที่เล่นซอด้วงได้นิดหน่อย
+              </p>
 
               <p className="text-sm text-[#6B5040] leading-relaxed mb-6 max-w-md">
-                รวมโน้ตเพลงซอด้วงสำหรับทุกระดับ ตั้งแต่มือใหม่จนถึงระดับปรมาจารย์
+                จัดทำโน้ตเพลงซอด้วงสำหรับทุกระดับ ตั้งแต่มือใหม่จนถึงระดับคนที่เล่นเป็น
                 ครอบคลุมทั้งเพลงไทยเดิม เพลงไทย และเพลงสากล
-                โน้ตฟรีสามารถดาวน์โหลดได้ทันที
+                โน้ตฟรีสามารถดาวน์โหลดได้ทันที และขอค่าจ่ายโดเมนเว็บบ้าง บางเพลงแกะยาก
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -153,7 +155,7 @@ export default function Home() {
                 <img
                   src={HERO_IMAGE}
                   alt="ซอด้วงและโน้ตเพลง"
-                  className="w-full h-64 md:h-80 object-cover"
+                  className="w-full h-64 md:h-75 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2C1810]/30 to-transparent" />
               </div>
