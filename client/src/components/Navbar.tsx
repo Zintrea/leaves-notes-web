@@ -37,13 +37,13 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
             className="flex items-center gap-2 group"
           >
             <div className="w-8 h-8 rounded-sm bg-[#2C1810] flex items-center justify-center">
-              <span className="text-[#F7F2E7] text-xs font-bold font-serif">ซด</span>
+              <span className="text-[#F7F2E7] text-xs font-bold font-serif">ใบไม้</span>
             </div>
             <div className="leading-tight">
               <span className="font-serif font-bold text-[#2C1810] text-sm group-hover:text-[#8B3A2A] transition-colors">
-                ซอด้วง Tabs
+                โน้ตดนตรีไทย
               </span>
-              <p className="text-[9px] text-[#9A8070] tracking-wider uppercase">โน้ตเพลงซอด้วง</p>
+              <p className="text-[9px] text-[#9A8070] tracking-wider uppercase">ซอด้วงและอื่น ๆ</p>
             </div>
           </button>
 
