@@ -13,6 +13,9 @@
  * =====================================================
  */
 
+// CDN Base URL for assets
+const CDN_BASE = "https://cdn.jsdelivr.net/gh/Zintrea/leaves-notes-assets";
+
 // ระดับความยาก
 export type DifficultyLevel = "beginner" | "intermediate" | "master";
 
@@ -73,7 +76,7 @@ export const SONGS: SongEntry[] = [
     genre: "thai-traditional",
     tags: ["ฟรี", "โน้ต"],
     isFree: true,
-    pdfUrl: "", // ใส่ลิงค์ PDF ที่นี่
+    pdfUrl: `${CDN_BASE}/pdfs/lao-duang-duen.pdf`,
     inboxUrl: "https://www.facebook.com/",
     description: "เพลงไทยเดิมที่คุ้นหูและเหมาะสำหรับผู้เริ่มต้น ทำนองไพเราะ จังหวะไม่เร็ว",
     createdAt: "2024-01-01",

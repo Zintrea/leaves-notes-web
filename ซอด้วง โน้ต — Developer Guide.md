@@ -1,13 +1,13 @@
-# ซอด้วง Tabs — Developer Guide
+# ซอด้วง โน้ต — Developer Guide
 
-คู่มือการแก้ไขเว็บซอด้วง Tabs สำหรับนักพัฒนา ครอบคลุมทุกส่วนของการปรับแต่ง
+คู่มือการแก้ไขเว็บซอด้วง โน้ต สำหรับนักพัฒนา ครอบคลุมทุกส่วนของการปรับแต่ง
 
 ---
 
 ## 📁 โครงสร้างโปรเจกต์
 
 ```
-saodung-tabs/
+sawduang-notes/
 ├── client/
 │   ├── public/                    # ไฟล์ static (favicon, robots.txt)
 │   ├── src/
@@ -692,7 +692,7 @@ interface FilterBarProps {
 ### 12.1 Build เว็บ
 
 ```bash
-cd saodung-tabs
+cd sawduang-notes
 pnpm build
 ```
 
