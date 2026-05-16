@@ -121,7 +121,7 @@ export default function SongSection({ songs, isLoading, error }: SongSectionProp
                     <div className="flex justify-center mt-8">
                       <button
                         onClick={() => setVisibleCount((c) => c + SONGS_PER_PAGE)}
-                        className="flex items-center gap-2 px-6 py-2.5 border border-[#D4C5A0] bg-[#FEFAF2] text-[#6B5040] text-sm font-medium rounded-sm hover:border-[#8B3A2A] hover:text-[#8B3A2A] transition-colors"
+                        className="flex items-center gap-2 px-6 py-3 border border-[#D4C5A0] bg-[#FEFAF2] text-[#6B5040] text-base font-medium rounded-sm hover:border-[#8B3A2A] hover:text-[#8B3A2A] transition-colors"
                       >
                         <ChevronDown size={15} />
                         ดูเพิ่มเติม ({filteredSongs.length - visibleCount} เพลง)
