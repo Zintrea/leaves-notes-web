@@ -98,6 +98,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Sarabun', sans-serif;
+    font-size: 16px;        /* base 16px สำหรับคนอ่านง่าย */
+    line-height: 1.6;       /* ระยะห่างบรรทัดสบายตา */
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Noto Serif Thai', serif;
@@ -105,6 +107,18 @@
   .font-serif {
     font-family: 'Noto Serif Thai', serif;
   }
+
+  /* Focus-visible สำหรับคีย์บอร์ด navigation */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-[#8B3A2A];
+  }
+
+  /* Scroll margin — Navbar ไม่บัง content */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Touch target ขั้นต่ำ 44px */
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -115,6 +129,12 @@
   input[type="checkbox"]:not(:disabled),
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
+    min-height: 44px;       /* minimum touch target */
+  }
+
+  /* Links ขนาดเล็ก (inline text) ยกเว้น min-height */
+  a:not([class]) {
+    min-height: auto;
   }
 }
 

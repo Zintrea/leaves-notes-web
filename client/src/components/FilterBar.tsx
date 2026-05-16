@@ -4,7 +4,8 @@
  * รองรับการกรองตามระดับความยากและประเภทเพลง
  */
 
-import { DifficultyLevel, SongGenre, DIFFICULTY_LABELS, GENRE_LABELS } from "@/data/songs";
+import type { DifficultyLevel, SongGenre } from "@/lib/song-constants";
+import { DIFFICULTY_LABELS, GENRE_LABELS } from "@/lib/song-constants";
 import { Search, X } from "lucide-react";
 
 interface FilterBarProps {
@@ -64,7 +65,7 @@ export default function FilterBar({
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="ค้นหาเพลงหรือศิลปิน..."
-          className="w-full pl-9 pr-4 py-2 text-sm bg-white border border-[#D4C5A0] rounded-sm text-[#2C1810] placeholder-[#B0A090] focus:outline-none focus:ring-1 focus:ring-[#8B3A2A] focus:border-[#8B3A2A] transition-colors"
+          className="w-full pl-9 pr-4 py-3 text-base bg-white border border-[#D4C5A0] rounded-sm text-[#2C1810] placeholder-[#B0A090] focus:outline-none focus:ring-2 focus:ring-[#8B3A2A] focus:border-[#8B3A2A] transition-colors"
         />
         {search && (
           <button
@@ -88,7 +89,7 @@ export default function FilterBar({
               <button
                 key={opt.value}
                 onClick={() => onDifficultyChange(opt.value)}
-                className={`px-3 py-1 text-xs rounded-sm border font-medium transition-all duration-200 ${
+                className={`px-4 py-2 text-sm rounded-sm border font-medium transition-all duration-200 ${
                   selectedDifficulty === opt.value
                     ? "bg-[#8B3A2A] text-white border-[#8B3A2A] shadow-sm"
                     : "bg-white text-[#6B5040] border-[#D4C5A0] hover:border-[#8B3A2A] hover:text-[#8B3A2A]"
@@ -110,7 +111,7 @@ export default function FilterBar({
               <button
                 key={opt.value}
                 onClick={() => onGenreChange(opt.value)}
-                className={`px-3 py-1 text-xs rounded-sm border font-medium transition-all duration-200 ${
+                className={`px-4 py-2 text-sm rounded-sm border font-medium transition-all duration-200 ${
                   selectedGenre === opt.value
                     ? "bg-[#2C5F8A] text-white border-[#2C5F8A] shadow-sm"
                     : "bg-white text-[#6B5040] border-[#D4C5A0] hover:border-[#2C5F8A] hover:text-[#2C5F8A]"

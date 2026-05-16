@@ -1,0 +1,31 @@
+{
+  "packages": [
+    {
+      "id": "package-1",
+      "title": "แบบที่ 1",
+      "subtitle": "โน้ตเมโลดี้",
+      "description": "เหมาะสำหรับผู้ต้องการเล่นเฉพาะ Melody ดูง่าย ไม่ซับซ้อน เหมาะสำหรับผู้เริ่มต้น",
+      "price": 200,
+      "features": ["โน้ตเมโลดี้", "เนื้อเพลง", "ไฟล์ PDF"],
+      "isHighlighted": false
+    },
+    {
+      "id": "package-2",
+      "title": "แบบที่ 2",
+      "subtitle": "Melody + Chord",
+      "description": "มีรายละเอียดทั้ง Melody และ Chord เพลงมีมิติ เพราะขึ้น เหมาะสำหรับนักดนตรีระดับกลาง",
+      "price": 300,
+      "features": ["โน้ตเมโลดี้", "คอร์ดประกอบ", "เนื้อเพลง", "ไฟล์ PDF"],
+      "isHighlighted": false
+    },
+    {
+      "id": "package-3",
+      "title": "แบบที่ 3",
+      "subtitle": "Melody + Chord + คลิป",
+      "description": "กลัวเล่นไม่สำเร็จ? มีโน้ตพร้อมคลิปตัวอย่างการเล่นแบบเห็นนิ้ว สำหรับฝึกตามได้เลย",
+      "price": 500,
+      "features": ["โน้ตเมโลดี้", "คอร์ดประกอบ", "เนื้อเพลง", "ไฟล์ PDF", "คลิปสาธิต"],
+      "isHighlighted": true
+    }
+  ]
+}

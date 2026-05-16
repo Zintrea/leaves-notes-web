@@ -30,20 +30,20 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
   return (
     <nav className="sticky top-0 z-50 bg-[#FEFAF2]/95 backdrop-blur-sm border-b border-[#D4C5A0] shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <button
             onClick={() => handleNav("top")}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group py-2"
           >
-            <div className="w-8 h-8 rounded-sm bg-[#2C1810] flex items-center justify-center">
-              <span className="text-[#F7F2E7] text-xs font-bold font-serif">ใบไม้</span>
+            <div className="w-9 h-9 rounded-sm bg-[#2C1810] flex items-center justify-center">
+              <span className="text-[#F7F2E7] text-sm font-bold font-serif">ใบไม้</span>
             </div>
             <div className="leading-tight">
-              <span className="font-serif font-bold text-[#2C1810] text-sm group-hover:text-[#8B3A2A] transition-colors">
+              <span className="font-serif font-bold text-[#2C1810] text-base group-hover:text-[#8B3A2A] transition-colors">
                 โน้ตดนตรีไทย
               </span>
-              <p className="text-[9px] text-[#9A8070] tracking-wider uppercase">ซอด้วงและอื่น ๆ</p>
+              <p className="text-[10px] text-[#9A8070] tracking-wider uppercase">ซอด้วงและอื่น ๆ</p>
             </div>
           </button>
 
@@ -53,7 +53,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                className={`relative px-4 py-2.5 text-base font-medium transition-colors duration-200 ${
                   activeSection === link.id
                     ? "text-[#8B3A2A]"
                     : "text-[#6B5040] hover:text-[#8B3A2A]"
@@ -69,10 +69,10 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-[#6B5040] hover:text-[#8B3A2A]"
+            className="md:hidden p-3 text-[#6B5040] hover:text-[#8B3A2A]"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
             <button
               key={link.id}
               onClick={() => handleNav(link.id)}
-              className={`w-full text-left px-6 py-3 text-sm font-medium border-b border-[#E8DCC8] transition-colors ${
+              className={`w-full text-left px-6 py-4 text-base font-medium border-b border-[#E8DCC8] transition-colors ${
                 activeSection === link.id
                   ? "text-[#8B3A2A] bg-[#F5EDD6]"
                   : "text-[#6B5040] hover:bg-[#F5EDD6]"

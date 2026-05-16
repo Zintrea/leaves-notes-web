@@ -1,0 +1,136 @@
+{
+  "songs": [
+    {
+      "id": "lao-duang-duen",
+      "title": "ลาวดวงเดือน",
+      "artist": "เพลงพื้นบ้านไทย",
+      "difficulty": "beginner",
+      "genre": "thai-traditional",
+      "tags": ["ฟรี", "โน้ต"],
+      "isFree": true,
+      "pdfUrl": "/data/pdfs/lao-duang-duen.pdf",
+      "description": "เพลงไทยเดิมที่คุ้นหูและเหมาะสำหรับผู้เริ่มต้น ทำนองไพเราะ จังหวะไม่เร็ว",
+      "createdAt": "2024-01-01"
+    },
+    {
+      "id": "khamen-sai-yok",
+      "title": "เขมรไทรโยค",
+      "artist": "เพลงพื้นบ้านไทย",
+      "difficulty": "intermediate",
+      "genre": "thai-traditional",
+      "tags": ["โน้ต", "คอร์ด"],
+      "isFree": false,
+      "pdfUrl": "",
+      "description": "เพลงไทยเดิมที่มีเทคนิคการสี ต้องการความชำนาญระดับกลาง",
+      "createdAt": "2024-01-05"
+    },
+    {
+      "id": "phleng-ching",
+      "title": "เพลงฉิ่ง",
+      "artist": "เพลงพื้นบ้านไทย",
+      "difficulty": "master",
+      "genre": "thai-traditional",
+      "tags": ["โน้ต", "คอร์ด", "คลิป"],
+      "isFree": false,
+      "pdfUrl": "",
+      "description": "เพลงไทยเดิมระดับสูง ต้องการเทคนิคการสีที่ซับซ้อนและประสบการณ์สูง",
+      "createdAt": "2024-01-10"
+    },
+    {
+      "id": "sao-chana",
+      "title": "เสาวคนธ์",
+      "artist": "เพลงพื้นบ้านไทย",
+      "difficulty": "beginner",
+      "genre": "thai-traditional",
+      "tags": ["ฟรี", "โน้ต"],
+      "isFree": true,
+      "pdfUrl": "",
+      "description": "เพลงไทยเดิมทำนองอ่อนหวาน เหมาะสำหรับผู้เริ่มต้นฝึกซอด้วง",
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": "sam-chan",
+      "title": "สามชั้น",
+      "artist": "เพลงพื้นบ้านไทย",
+      "difficulty": "master",
+      "genre": "thai-traditional",
+      "tags": ["โน้ต", "คอร์ด"],
+      "isFree": false,
+      "pdfUrl": "",
+      "description": "เพลงไทยเดิมที่มีความซับซ้อนสูง เหมาะสำหรับนักดนตรีระดับปรมาจารย์",
+      "createdAt": "2024-01-20"
+    },
+    {
+      "id": "mai-mee-ter-mai-dai",
+      "title": "ไม่มีเธอไม่ได้",
+      "artist": "ศิลปินไทย",
+      "difficulty": "beginner",
+      "genre": "thai-modern",
+      "tags": ["ฟรี", "โน้ต"],
+      "isFree": true,
+      "pdfUrl": "",
+      "description": "เพลงไทยสมัยใหม่ทำนองไพเราะ เหมาะสำหรับผู้เริ่มต้นที่อยากเล่นเพลงไทย",
+      "createdAt": "2024-02-01"
+    },
+    {
+      "id": "ruang-rao-kong-rao",
+      "title": "เรื่องของเรา",
+      "artist": "ศิลปินไทย",
+      "difficulty": "intermediate",
+      "genre": "thai-modern",
+      "tags": ["โน้ต", "คอร์ด"],
+      "isFree": false,
+      "pdfUrl": "",
+      "description": "เพลงไทยสมัยใหม่ระดับกลาง มีทำนองที่สวยงามและเทคนิคที่น่าสนใจ",
+      "createdAt": "2024-02-10"
+    },
+    {
+      "id": "fah-kwan-duen",
+      "title": "ฟ้าควันเดือน",
+      "artist": "ศิลปินไทย",
+      "difficulty": "intermediate",
+      "genre": "thai-modern",
+      "tags": ["โน้ต"],
+      "isFree": false,
+      "pdfUrl": "",
+      "description": "เพลงไทยสมัยใหม่ที่มีทำนองสวยงาม เหมาะสำหรับนักดนตรีระดับกลาง",
+      "createdAt": "2024-02-15"
+    },
+    {
+      "id": "river-flows-in-you",
+      "title": "River Flows in You",
+      "artist": "Yiruma",
+      "difficulty": "intermediate",
+      "genre": "international",
+      "tags": ["โน้ต", "คอร์ด"],
+      "isFree": false,
+      "pdfUrl": "",
+      "description": "เพลงสากลที่มีทำนองสวยงาม เรียบเรียงสำหรับซอด้วง",
+      "createdAt": "2024-03-01"
+    },
+    {
+      "id": "canon-in-d",
+      "title": "Canon in D",
+      "artist": "Johann Pachelbel",
+      "difficulty": "master",
+      "genre": "international",
+      "tags": ["โน้ต", "คอร์ด", "คลิป"],
+      "isFree": false,
+      "pdfUrl": "",
+      "description": "เพลงคลาสสิกระดับโลก เรียบเรียงสำหรับซอด้วง ต้องการทักษะระดับสูง",
+      "createdAt": "2024-03-10"
+    },
+    {
+      "id": "a-thousand-years",
+      "title": "A Thousand Years",
+      "artist": "Christina Perri",
+      "difficulty": "beginner",
+      "genre": "international",
+      "tags": ["ฟรี", "โน้ต"],
+      "isFree": true,
+      "pdfUrl": "",
+      "description": "เพลงสากลยอดนิยม เรียบเรียงสำหรับซอด้วงในระดับเริ่มต้น",
+      "createdAt": "2024-03-15"
+    }
+  ]
+}
