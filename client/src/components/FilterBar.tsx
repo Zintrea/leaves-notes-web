@@ -4,7 +4,8 @@
  * รองรับการกรองตามระดับความยากและประเภทเพลง
  */
 
-import { DifficultyLevel, SongGenre, DIFFICULTY_LABELS, GENRE_LABELS } from "@/data/songs";
+import type { DifficultyLevel, SongGenre } from "@/lib/song-constants";
+import { DIFFICULTY_LABELS, GENRE_LABELS } from "@/lib/song-constants";
 import { Search, X } from "lucide-react";
 
 interface FilterBarProps {

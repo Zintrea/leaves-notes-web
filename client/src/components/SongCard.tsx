@@ -4,7 +4,8 @@
  * แสดงข้อมูลเพลงแต่ละเพลงในรูปแบบการ์ด
  */
 
-import { SongEntry, DIFFICULTY_LABELS, GENRE_LABELS, DIFFICULTY_COLORS, GENRE_COLORS } from "@/data/songs";
+import type { SongEntry } from "@/lib/song-constants";
+import { DIFFICULTY_LABELS, GENRE_LABELS, DIFFICULTY_COLORS, GENRE_COLORS } from "@/lib/song-constants";
 import { FileText, MessageCircle, Lock, Unlock } from "lucide-react";
 
 interface SongCardProps {

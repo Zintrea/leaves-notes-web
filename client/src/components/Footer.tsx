@@ -1,13 +1,10 @@
 /**
  * Footer Component
  * Design: Ink & Paper — footer เรียบง่าย พร้อม social media links
- *
- * วิธีแก้ไข social media links:
- * แก้ที่ไฟล์ client/src/data/packages.ts ใน CONTACT_INFO object
  */
 
-import { CONTACT_INFO } from "@/data/packages";
 import { Facebook, Youtube, Instagram } from "lucide-react";
+import type { ContactInfo } from "@/lib/package-constants";
 
 // TikTok icon (lucide ไม่มี ทำเอง)
 function TikTokIcon({ size = 16 }: { size?: number }) {
@@ -18,12 +15,16 @@ function TikTokIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-export default function Footer() {
+interface FooterProps {
+  contacts: ContactInfo | null;
+}
+
+export default function Footer({ contacts }: FooterProps) {
   const socialLinks = [
-    { url: CONTACT_INFO.facebook, icon: Facebook, label: "Facebook" },
-    { url: CONTACT_INFO.youtube, icon: Youtube, label: "YouTube" },
-    { url: CONTACT_INFO.tiktok, icon: TikTokIcon, label: "TikTok" },
-    { url: CONTACT_INFO.instagram, icon: Instagram, label: "Instagram" },
+    { url: contacts?.facebook, icon: Facebook, label: "Facebook" },
+    { url: contacts?.youtube, icon: Youtube, label: "YouTube" },
+    { url: contacts?.tiktok, icon: TikTokIcon, label: "TikTok" },
+    { url: contacts?.instagram, icon: Instagram, label: "Instagram" },
   ].filter((s) => s.url);
 
   return (
@@ -69,9 +70,9 @@ export default function Footer() {
           </p>
           <p className="text-xs text-[#6B5040]">
             ติดต่อสั่งทำโน้ตได้ที่{" "}
-            {CONTACT_INFO.facebook && (
+            {contacts?.facebook && (
               <a
-                href={CONTACT_INFO.facebook}
+                href={contacts.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#C8B89A] hover:text-white underline"

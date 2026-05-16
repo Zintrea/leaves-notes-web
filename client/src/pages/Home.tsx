@@ -11,8 +11,11 @@
  */
 
 import { useState, useMemo } from "react";
-import { SONGS, filterSongs, DifficultyLevel, SongGenre } from "@/data/songs";
-import { PACKAGES, CONTACT_INFO } from "@/data/packages";
+import { useSongs } from "@/hooks/useSongs";
+import { usePackages } from "@/hooks/usePackages";
+import { useContacts } from "@/hooks/useContacts";
+import { filterSongs } from "@/services/songs";
+import type { DifficultyLevel, SongGenre } from "@/lib/song-constants";
 import Navbar from "@/components/Navbar";
 import SongCard from "@/components/SongCard";
 import FilterBar from "@/components/FilterBar";
@@ -27,7 +30,30 @@ const PAPER_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663409426185/N2cp2
 
 const SONGS_PER_PAGE = 8;
 
+function LoadingSkeleton() {
+  return (
+    <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} className="bg-[#FEFAF2] border border-[#D4C5A0] rounded-sm p-4 animate-pulse">
+          <div className="h-4 bg-[#E8DCC8] rounded w-3/4 mb-3" />
+          <div className="h-3 bg-[#E8DCC8] rounded w-1/2 mb-4" />
+          <div className="flex gap-1.5 mb-3">
+            <div className="h-5 bg-[#E8DCC8] rounded w-16" />
+            <div className="h-5 bg-[#E8DCC8] rounded w-20" />
+          </div>
+          <div className="h-3 bg-[#E8DCC8] rounded w-full mb-1" />
+          <div className="h-3 bg-[#E8DCC8] rounded w-2/3" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
+  const { songs, isLoading: songsLoading, error: songsError } = useSongs();
+  const { packages } = usePackages();
+  const { contacts } = useContacts();
+
   // State สำหรับ filter
   const [search, setSearch] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState<DifficultyLevel | "all">("all");
@@ -38,12 +64,12 @@ export default function Home() {
   // กรองเพลง
   const filteredSongs = useMemo(
     () =>
-      filterSongs(SONGS, {
+      filterSongs(songs, {
         search,
         difficulty: selectedDifficulty,
         genre: selectedGenre,
       }),
-    [search, selectedDifficulty, selectedGenre]
+    [songs, search, selectedDifficulty, selectedGenre]
   );
 
   // เพลงที่แสดงในหน้าปัจจุบัน
@@ -63,6 +89,8 @@ export default function Home() {
     setSelectedGenre(v);
     setVisibleCount(SONGS_PER_PAGE);
   };
+
+  const freeCount = songs.filter((s) => s.isFree).length;
 
   return (
     <div
@@ -118,7 +146,7 @@ export default function Home() {
                   ดูโน้ตเพลง
                 </button>
                 <a
-                  href={CONTACT_INFO.facebook}
+                  href={contacts?.facebook || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-5 py-2.5 bg-transparent border border-[#8B3A2A] text-[#8B3A2A] text-sm font-semibold rounded-sm hover:bg-[#8B3A2A] hover:text-white transition-colors"
@@ -131,13 +159,15 @@ export default function Home() {
               {/* Stats */}
               <div className="flex gap-6 mt-8 pt-6 border-t border-[#D4C5A0]">
                 <div>
-                  <p className="text-2xl font-bold font-serif text-[#2C1810]">{SONGS.length}+</p>
+                  <p className="text-2xl font-bold font-serif text-[#2C1810]">
+                    {songs.length > 0 ? `${songs.length}+` : "-"}
+                  </p>
                   <p className="text-xs text-[#9A8070]">โน้ตเพลง</p>
                 </div>
                 <div className="w-px bg-[#D4C5A0]" />
                 <div>
                   <p className="text-2xl font-bold font-serif text-[#2C1810]">
-                    {SONGS.filter((s) => s.isFree).length}
+                    {songs.length > 0 ? freeCount : "-"}
                   </p>
                   <p className="text-xs text-[#9A8070]">โน้ตฟรี</p>
                 </div>
@@ -200,56 +230,72 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-[280px_1fr] gap-6">
-            {/* Sidebar filter */}
-            <div className="lg:sticky lg:top-20 lg:self-start">
-              <FilterBar
-                search={search}
-                onSearchChange={handleSearchChange}
-                selectedDifficulty={selectedDifficulty}
-                onDifficultyChange={handleDifficultyChange}
-                selectedGenre={selectedGenre}
-                onGenreChange={handleGenreChange}
-                totalCount={SONGS.length}
-                filteredCount={filteredSongs.length}
-              />
+          {/* Error state */}
+          {songsError && (
+            <div className="flex flex-col items-center justify-center py-10 text-center">
+              <div className="w-16 h-16 rounded-sm bg-red-50 border border-red-200 flex items-center justify-center mb-4">
+                <Music2 size={28} className="text-red-400" />
+              </div>
+              <p className="text-[#6B5040] font-medium mb-1">เกิดข้อผิดพลาดในการโหลดข้อมูล</p>
+              <p className="text-xs text-[#9A8070]">กรุณาลองใหม่ภายหลัง</p>
             </div>
+          )}
 
-            {/* Song grid */}
-            <div>
-              {visibleSongs.length > 0 ? (
-                <>
-                  <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {visibleSongs.map((song) => (
-                      <SongCard key={song.id} song={song} />
-                    ))}
-                  </div>
+          {/* Songs content */}
+          {!songsError && (
+            <div className="grid lg:grid-cols-[280px_1fr] gap-6">
+              {/* Sidebar filter */}
+              <div className="lg:sticky lg:top-20 lg:self-start">
+                <FilterBar
+                  search={search}
+                  onSearchChange={handleSearchChange}
+                  selectedDifficulty={selectedDifficulty}
+                  onDifficultyChange={handleDifficultyChange}
+                  selectedGenre={selectedGenre}
+                  onGenreChange={handleGenreChange}
+                  totalCount={songs.length}
+                  filteredCount={filteredSongs.length}
+                />
+              </div>
 
-                  {/* See more button */}
-                  {hasMore && (
-                    <div className="flex justify-center mt-8">
-                      <button
-                        onClick={() => setVisibleCount((c) => c + SONGS_PER_PAGE)}
-                        className="flex items-center gap-2 px-6 py-2.5 border border-[#D4C5A0] bg-[#FEFAF2] text-[#6B5040] text-sm font-medium rounded-sm hover:border-[#8B3A2A] hover:text-[#8B3A2A] transition-colors"
-                      >
-                        <ChevronDown size={15} />
-                        ดูเพิ่มเติม ({filteredSongs.length - visibleCount} เพลง)
-                      </button>
+              {/* Song grid or loading */}
+              <div>
+                {songsLoading ? (
+                  <LoadingSkeleton />
+                ) : visibleSongs.length > 0 ? (
+                  <>
+                    <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                      {visibleSongs.map((song) => (
+                        <SongCard key={song.id} song={song} />
+                      ))}
                     </div>
-                  )}
-                </>
-              ) : (
-                /* Empty state */
-                <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <div className="w-16 h-16 rounded-sm bg-[#F5EDD6] border border-[#D4C5A0] flex items-center justify-center mb-4">
-                    <Music2 size={28} className="text-[#B0A090]" />
+
+                    {/* See more button */}
+                    {hasMore && (
+                      <div className="flex justify-center mt-8">
+                        <button
+                          onClick={() => setVisibleCount((c) => c + SONGS_PER_PAGE)}
+                          className="flex items-center gap-2 px-6 py-2.5 border border-[#D4C5A0] bg-[#FEFAF2] text-[#6B5040] text-sm font-medium rounded-sm hover:border-[#8B3A2A] hover:text-[#8B3A2A] transition-colors"
+                        >
+                          <ChevronDown size={15} />
+                          ดูเพิ่มเติม ({filteredSongs.length - visibleCount} เพลง)
+                        </button>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  /* Empty state */
+                  <div className="flex flex-col items-center justify-center py-16 text-center">
+                    <div className="w-16 h-16 rounded-sm bg-[#F5EDD6] border border-[#D4C5A0] flex items-center justify-center mb-4">
+                      <Music2 size={28} className="text-[#B0A090]" />
+                    </div>
+                    <p className="text-[#6B5040] font-medium mb-1">ไม่พบเพลงที่ค้นหา</p>
+                    <p className="text-xs text-[#9A8070]">ลองเปลี่ยนคำค้นหาหรือตัวกรอง</p>
                   </div>
-                  <p className="text-[#6B5040] font-medium mb-1">ไม่พบเพลงที่ค้นหา</p>
-                  <p className="text-xs text-[#9A8070]">ลองเปลี่ยนคำค้นหาหรือตัวกรอง</p>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -266,13 +312,13 @@ export default function Home() {
             <p className="text-sm text-[#6B5040] max-w-md mx-auto leading-relaxed">
               ติดต่อสั่งทำโน้ตได้ที่ Inbox ของ Facebook
               จัดส่งเป็นไฟล์ PDF ใช้เวลาประมาณ{" "}
-              <span className="font-semibold">{CONTACT_INFO.deliveryTime}</span>
+              <span className="font-semibold">{contacts?.deliveryTime || "-"}</span>
             </p>
           </div>
 
           {/* Package cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PACKAGES.map((pkg, i) => (
+            {packages.map((pkg, i) => (
               <PackageCard
                 key={pkg.id}
                 pkg={pkg}
@@ -289,7 +335,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <Footer />
+      <Footer contacts={contacts} />
     </div>
   );
 }
