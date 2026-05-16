@@ -108,6 +108,9 @@ temp/
 # Webdev artifacts (checkpoint zips, migrations, etc.)
 .webdev/
 
+# Manus debug logs
+.manus-logs/
+
 # Virtual Environments
 venv/
 env/
