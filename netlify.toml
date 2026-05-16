@@ -1,0 +1,23 @@
+# Netlify deploy configuration
+# วิธีใช้: push ไป GitHub → Netlify import → auto deploy
+
+[build]
+  command = "pnpm build"
+  publish = "dist/public"
+
+# SPA routing — ทุก path ส่งไป index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache headers สำหรับ JSON และ PDF
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/data/pdfs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
